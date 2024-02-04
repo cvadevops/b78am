@@ -15,8 +15,8 @@
 
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.organization>cvadevops</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.login>5e36f7ce674c28558c9aa0aed138281e4a56e7d4</sonar.login>
+        <sonar.projectKey>cvadevops_b78am</sonar.projectKey>
+        <sonar.login>f125f70c5eb8a29a0b1ef3e7281e879de9d27653</sonar.login>
 
     </properties>
 
@@ -143,5 +143,3 @@
             </plugins>
         </pluginManagement>
         <finalName>b78am</finalName>
-    </build>
-</project>

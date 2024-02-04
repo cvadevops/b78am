@@ -6,8 +6,7 @@ phases:
       java: corretto11
   pre_build:
     commands:
-      - echo Code Scanning using SonarQube
-      - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=cvadevops_b78am
+      - echo Nothing to do in the pre_build phase...
   build:
     commands:
       - echo Build started on `date`
