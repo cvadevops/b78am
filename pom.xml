@@ -14,10 +14,10 @@
         <maven.compiler.target>11</maven.compiler.target>
 
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.organization>cvadevops</sonar.organization>
-        <sonar.projectKey>cvadevops_b78am</sonar.projectKey>
-        <sonar.login>f125f70c5eb8a29a0b1ef3e7281e879de9d27653</sonar.login>
-
+        <sonar.organization>kummari</sonar.organization>
+        <sonar.projectKey>kummari_b78am</sonar.projectKey>
+        <sonar.login>dcb673362e079a49ff0a4c9f655a569846da6fc9</sonar.login>
+        
     </properties>
 
     <!--
@@ -34,29 +34,16 @@
     </repository>	
 </distributionManagement>
     -->
-
+    
 <distributionManagement>
+    
+      <repository>
+        <id>bcr-b78am</id>
+        <url>https://bcr-420815905200.d.codeartifact.us-east-1.amazonaws.com/maven/b78am/</url>
+      </repository>
 
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>libs-snapshot-local</name>
-        <url>http://54.91.233.188:8082/artifactory/libs-snapshot-local/</url>
-    </snapshotRepository>
-
-    <repository>
-        <id>releases</id>
-        <name>libs-release-local</name>
-        <url>http://54.91.233.188:8082/artifactory/libs-release-local/</url>
-    </repository>
-    <repositories>
-        <repository>
-          <id>bcr-b78am</id>
-          <url>https://bcr-183610593709.d.codeartifact.us-east-1.amazonaws.com/maven/b78am/</url>
-         </repository>
-    </repositories>
 </distributionManagement>    
-
-
+    
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -148,3 +135,5 @@
             </plugins>
         </pluginManagement>
         <finalName>b78am</finalName>
+    </build>
+</project>
