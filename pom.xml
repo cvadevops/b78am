@@ -48,7 +48,12 @@
         <name>libs-release-local</name>
         <url>http://54.91.233.188:8082/artifactory/libs-release-local/</url>
     </repository>
-
+    <repositories>
+        <repository>
+          <id>bcr-b78am</id>
+          <url>https://bcr-183610593709.d.codeartifact.us-east-1.amazonaws.com/maven/b78am/</url>
+         </repository>
+    </repositories>
 </distributionManagement>    
 
 
