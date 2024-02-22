@@ -16,8 +16,8 @@ phases:
       - echo Build started on `date`
       - pwd
       - dir 
-      - dir settings.xml
-      - cp -pvr settings.xml ~/.m2/settings.xml
+      - dir $CODEBUILD_SRC_DIR/settings.xml
+      - cp -pvr $CODEBUILD_SRC_DIR/settings.xml ~/.m2/settings.xml
       - mvn deploy
       
   post_build:
