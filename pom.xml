@@ -16,8 +16,8 @@
 
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.organization>cvadevops</sonar.organization>
-        <sonar.projectKey>cvadevops_b78am</sonar.projectKey>
-        <sonar.token>SONAR_TOKEN</sonar.token>
+        <sonar.projectKey>cvadevops_cloudbinary-b78am</sonar.projectKey>
+        <sonar.login>95e54acaefc4d2bb86c2640dc57d013f96778929</sonar.login>
         
     </properties>
 
