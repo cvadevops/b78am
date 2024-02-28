@@ -4,12 +4,12 @@
   <servers>
     <server>
       <username>admin</username>
-      <password>Cvaaws*777</password>
+      <password>Cjfrog.777</password>
       <id>release</id>
     </server>
     <server>
       <username>admin</username>
-      <password>Cvaaws*777</password>
+      <password>Cjfrog.777</password>
       <id>snapshots</id>
     </server>
   </servers>
@@ -22,13 +22,13 @@
           </snapshots>
           <id>release</id>
           <name>libs-release-local/</name>
-          <url>http://34.228.170.224:8082/artifactory/libs-release-local//</url>
+          <url>http://100.27.43.91:8082/artifactory/libs-release-local/</url>
         </repository>
         <repository>
           <snapshots />
           <id>snapshots</id>
           <name>libs-snapshot-local</name>
-          <url>http://34.228.170.224:8082/artifactory/libs-snapshot-local//</url>
+          <url>http://100.27.43.91:8082/artifactory/libs-snapshot-local/</url>
         </repository>
       </repositories>
       <id>default</id>
