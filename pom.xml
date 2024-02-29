@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.aws.codestar.projecttemplates</groupId>
     <artifactId>b78am</artifactId>
-    <version>2.0.0</version>
+    <version>3.0.0</version>
     <!-- <version>1.0.0-SNAPSHOT</version> -->
     <packaging>war</packaging>
     <name>Cloud Binary - Sample Spring MVC Application</name>
@@ -17,7 +17,7 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.organization>cvadevops</sonar.organization>
         <sonar.projectKey>cvadevops_b78am</sonar.projectKey>
-        <sonar.login>1f8f6569c700f6c20192d13feeca82519f654e5e</sonar.login>
+        <sonar.login>a42518ed10f47f96295deeb6dc0fb5db52d910d5</sonar.login>
         
     </properties>
 
@@ -25,12 +25,12 @@
     <snapshotRepository>
         <id>snapshots</id>
         <name>libs-snapshot-local</name>
-        <url>http://100.27.43.91:8082/artifactory/libs-snapshot-local/</url>
+        <url>http://44.203.207.229:8082/artifactory/libs-snapshot-local/</url>
     </snapshotRepository>
     <repository>
         <id>release</id>
         <name>libs-release-local</name>
-        <url>http://100.27.43.91:8082/artifactory/libs-release-local/</url>
+        <url>http://44.203.207.229:8082/artifactory/libs-release-local/</url>
     </repository>	
 </distributionManagement>
     
