@@ -30,7 +30,7 @@ node {
       sh "'${mvnHome}/bin/mvn'  install"
   }
   stage ('Deliver Artifact to Tomcat') {
-      sh 'curl -u admin:redhat@123 -T target/**.war "http://34.201.218.148:8080/manager/text/deploy?path=/opswork&update=true"'
+      sh 'curl -u admin:nandu@123 -T target/**.war "http://34.201.218.148:8080/manager/text/deploy?path=/opswork&update=true"'
   }
   stage ('SmokeTest') {
       sh 'curl --retry-delay 10 --retry 5 "http://34.201.218.148:8080/opswork"'
