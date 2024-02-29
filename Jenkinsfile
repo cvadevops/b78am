@@ -35,4 +35,5 @@ node {
   stage ('SmokeTest') {
       sh 'curl --retry-delay 10 --retry 5 "http://34.201.218.148:8080/opswork"'
   }
-}
+
+ }
