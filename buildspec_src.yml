@@ -6,20 +6,11 @@ phases:
       java: corretto11
   pre_build:
     commands:
-      #- echo Code Scanning using SonarQube
-      #- mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=cvadevops_b78am
-      - echo Connecting AWS CodeArtifact.
-      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain bcr --domain-owner 183610593709 --region us-east-1 --query authorizationToken --output text`
-
+      - echo Nothing to do in the pre_build phase...
   build:
     commands:
       - echo Build started on `date`
-      - pwd
-      - dir 
-      - dir $CODEBUILD_SRC_DIR/settings.xml
-      - cp -pvr $CODEBUILD_SRC_DIR/settings.xml ~/.m2/settings.xml
-      - mvn deploy
-      
+      - mvn install
   post_build:
     commands:
       - echo Build completed on `date`
