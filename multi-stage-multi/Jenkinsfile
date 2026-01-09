@@ -17,13 +17,24 @@ pipeline {
         sh 'node --version'
       }
     }
-    stage('DB') {
-      agent {
-        docker { image 'mysql:latest' }
-      }
-      steps {
-        sh 'SELECT * FROM XYZ'
-      }
+    
+     stage('DB') {
+            steps {
+                script {
+                    docker.image('mysql:8.0').withRun(
+                        "-e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=testdb"
+                    ) { c ->
+
+                        sleep 30  // wait for DB to be ready
+
+                        sh """
+                        docker exec ${c.id} mysql -uroot -proot -e "
+                        SHOW DATABASES;
+                        "
+                        """
+                    }
+                }
+            }
+        }
     }
-  }
 }
