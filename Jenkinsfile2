@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven'
+        jdk 'java'
+    }
+
+    stages {
+        stage('Checkout') {
+    steps {
+        git branch: 'qa',
+            url: 'https://github.com/cvadevops/b78am.git'
+            }
+        }
+
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+    steps {
+        withSonarQubeEnv('SonarQube') {
+            sh '''
+            mvn clean verify
+            mvn org.sonarsource.scanner.maven:sonar-maven-plugin:44.200.72.40:sonar \
+              -Dsonar.projectKey=ept-project \
+              -Dsonar.projectName="EPT-Project"
+            '''
+             }
+          }
+       }
+
+    }
+}
