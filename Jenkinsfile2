@@ -25,15 +25,13 @@ pipeline {
     steps {
         withSonarQubeEnv('SonarQube') {
             sh '''
-             mvn clean verify \
-org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
--Dsonar.projectKey=my-project \
--Dsonar.projectName=My-Project
-
+              mvn clean verify \
+              org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+              -Dsonar.projectKey=b78am \
+              -Dsonar.projectName=b78am
             '''
             }
-          }
-       }
-
+         }
+      }
     }
 }
