@@ -1,16 +1,28 @@
-node {
-        stage('Checkout') {
-        git branch: 'qa',
-            url: 'https://github.com/cvadevops/b78am.git'
-            
-        }
-  stage('SonarQube Analysis') {
-    def mvn = tool 'maven';
-    withSonarQubeEnv() {
-      sh "${mvn}mvn clean verify \
-              org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-              -Dsonar.projectKey=my-project \
-              -Dsonar.projectName=My-Project"
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven'
     }
-  }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh '''
+                      mvn clean verify \
+                      org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+                      -Dsonar.projectKey=my-project \
+                      -Dsonar.projectName=My-Project
+                    '''
+                }
+            }
+        }
+    }
 }
