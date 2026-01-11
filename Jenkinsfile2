@@ -26,9 +26,9 @@ pipeline {
         withSonarQubeEnv('SonarQube') {
             sh '''
             mvn clean verify
-            mvn org.sonarsource.scanner.maven:sonar-maven-plugin:44.200.72.40:sonar \
-              -Dsonar.projectKey=ept-project \
-              -Dsonar.projectName="EPT-Project"
+            mvn org.sonarsource.scanner.maven:sonar-maven-plugin:13.220.38.21:9000:sonar \
+              -Dsonar.projectKey=my-project \
+              -Dsonar.projectName="My-Project"
             '''
              }
           }
