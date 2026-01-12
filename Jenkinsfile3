@@ -1,0 +1,85 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven'
+        jdk 'java'
+    }
+
+    environment {
+        DOCKER_IMAGE = "sivabatti787/maven-app"
+        SONAR_SCANNER = tool 'sonar-scanner'
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'qa',
+                    url: 'https://github.com/cvadevops/b78am.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                    sh """
+                    ${SONAR_SCANNER}/bin/sonar-scanner \
+                    -Dsonar.projectKey=maven-pipeline \
+                    -Dsonar.projectName=maven-pipeline \
+                    -Dsonar.sources=src \
+                    -Dsonar.java.binaries=target
+                    """
+                }
+            }
+        }
+
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 5, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh """
+                docker build -t ${eclipse-temurin}:${3.23} .
+                docker tag ${eclipse-temurin}:${3.23} ${eclipse-temurin}:latest
+                """
+            }
+        }
+
+        stage('Docker Push') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'sivabatti787',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh """
+                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                    docker push ${eclipse-temurin}:${3.23}
+                    docker push ${eclipse-temurin}:latest
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Build, SonarQube analysis & Docker push completed'
+        }
+        failure {
+            echo '❌ Pipeline failed'
+        }
+    }
+}
