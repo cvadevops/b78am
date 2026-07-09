@@ -5,25 +5,15 @@ phases:
     runtime-versions:
       python: 3.11
     commands:
-      - echo "Changing to application directory..."
+      - echo "Installing dependencies..."
       - cd my-web-app
       - python -m pip install --upgrade pip
       - pip install -r requirements.txt
-
-  pre_build:
-    commands:
-      - cd my-web-app
-      - echo "Pre-build started..."
+      - python -m py_compile app.py
 
   build:
     commands:
-      - cd my-web-app
-      - python -m py_compile app.py
-      - echo "Build successful."
-
-  post_build:
-    commands:
-      - echo "Build completed."
+      - echo "Build completed successfully."
 
 artifacts:
   base-directory: my-web-app
