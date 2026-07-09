@@ -6,13 +6,13 @@ phases:
       python: 3.11
     commands:
       - echo "Installing dependencies..."
-      - cd my-web-app
       - python -m pip install --upgrade pip
-      - pip install -r requirements.txt
-      - python -m py_compile app.py
+      - pip install -r my-web-app/requirements.txt
 
   build:
     commands:
+      - echo "Compiling application..."
+      - python -m py_compile my-web-app/app.py
       - echo "Build completed successfully."
 
 artifacts:
