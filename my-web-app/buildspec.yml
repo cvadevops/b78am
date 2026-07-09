@@ -4,24 +4,24 @@ phases:
   install:
     runtime-versions:
       python: 3.11
-
     commands:
       - echo "Installing dependencies..."
+      - python -m pip install --upgrade pip
       - pip install -r requirements.txt
 
   pre_build:
     commands:
-      - echo "Pre-build started"
+      - echo "Pre-build started..."
 
   build:
     commands:
-      - echo "Build started"
+      - echo "Validating application..."
       - python -m py_compile app.py
-      - echo "Application Build Successful"
+      - echo "Build successful."
 
   post_build:
     commands:
-      - echo "Build Completed"
+      - echo "Build completed successfully."
 
 artifacts:
   files:
